@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,14 +7,15 @@ using System.Threading.Tasks;
 
 namespace Cafe
 {
-    class Menu
+    class Menu: IEnumerable, IEnumerator
     {
-        List<Dish> listDish;
-        public void AddDish(Dish d)
+        List<Dish> listDish = new List<Dish>();
+        int index = -1;
+        public void Add(Dish d)
         {
             listDish.Add(d);
         }
-        public bool RemoveDish(Dish d)
+        public bool Remove(Dish d)
         {
             if (listDish.Contains(d))
             {
@@ -23,9 +25,22 @@ namespace Cafe
             return false;
         }
         //итератор для обращения к пунктам меню!
-        public ShowMenu()
+        public IEnumerator GetEnumerator()
         {
-            return listDish;
+            return this;
+        }
+
+        public object Current => listDish[index];
+
+        public bool MoveNext()
+        {
+            index++;
+            return index < listDish.Count;
+        }
+
+        public void Reset()
+        {
+            index = -1;
         }
     }
 
@@ -39,6 +54,11 @@ namespace Cafe
         {
             this.name = name;
             this.price = price;
+        }
+
+        public override string ToString()
+        {
+            return name + " " + price + "р.";
         }
     }
 }
