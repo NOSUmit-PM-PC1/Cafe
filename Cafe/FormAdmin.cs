@@ -53,7 +53,7 @@ namespace Cafe
                 menu.Reset();
                 foreach (var dish in menu)
                 {
-                    listBoxMenu.Items.Add(dish);
+                    listBoxMenu.Items.Add(dish.ToString());
                 }
             }
             else

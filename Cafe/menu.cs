@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 namespace Cafe
 {
     [Serializable]
-    class Menu: IEnumerable, IEnumerator, ISerializable
+    public class Menu: IEnumerable, IEnumerator, ISerializable
     {
         List<Dish> listDish = new List<Dish>();
         int index = -1;
@@ -63,7 +63,7 @@ namespace Cafe
     }
 
     [Serializable]
-    class Dish
+    public class Dish
     {
         string name;
         double price;
