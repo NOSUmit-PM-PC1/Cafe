@@ -56,6 +56,12 @@ namespace userCafe
                 MessageBox.Show("Нет файла с меню");
             }
         }
-    
+
+        private void listView1_ColumnClick(object sender, ColumnClickEventArgs e)
+        {
+            //MessageBox.Show(e.Column.ToString());
+            menu.Sort();
+            ShowMenu();
+        }
     }
 }
