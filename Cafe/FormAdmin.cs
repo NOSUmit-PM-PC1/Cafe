@@ -24,10 +24,7 @@ namespace Cafe
             InitializeComponent();
         }
 
-        private void label2_Click(object sender, EventArgs e)
-        {
-
-        }
+  
 
         private void buttonAddDish_Click(object sender, EventArgs e)
         {
@@ -36,8 +33,11 @@ namespace Cafe
                 Dish newDish = new Dish();
                 newDish.Edit(textBoxNameDish.Text, Convert.ToDouble(textBoxPriceDish.Text));
                 menu.Add(newDish);
-                temp.Add(newDish);
-                
+                IFormatter formatter = new BinaryFormatter();
+                FileStream buffer = File.Create("temp.txt");
+                formatter.Serialize(buffer, menu);
+                buffer.Close();
+                ShowMenu();
             }
             catch
             {
@@ -45,10 +45,12 @@ namespace Cafe
             }
         }
 
-        private void buttonShowMenu_Click(object sender, EventArgs e)
+        void ShowMenu()
         {
             if (menu.Count > 0)
             {
+                listBoxMenu.Items.Clear();
+                menu.Reset();
                 foreach (var dish in menu)
                 {
                     listBoxMenu.Items.Add(dish);
@@ -57,18 +59,24 @@ namespace Cafe
             else
             {
                 MessageBox.Show(" в меню нет ни одного блюда");
-               
+
             }
         }
-
-        private void button1_Click(object sender, EventArgs e)
+ 
+        private void FormAdmin_Load(object sender, EventArgs e)
         {
-            // temp[0].Edit("куку", 10000000000);
-            // Сериализуем его
-            IFormatter formatter = new BinaryFormatter();
-            FileStream buffer = File.Create("temp.txt");
-            formatter.Serialize(buffer, menu);
-            buffer.Close();
+            try
+            {
+                IFormatter formatter = new BinaryFormatter();
+                FileStream buffer = File.OpenRead("temp.txt");
+                menu = (Menu)formatter.Deserialize(buffer);
+                buffer.Close();
+                ShowMenu();
+            }
+            catch
+            {
+                MessageBox.Show("Нет файла с меню");
+            }
         }
     }
 }

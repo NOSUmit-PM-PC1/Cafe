@@ -34,8 +34,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.buttonAddDish = new System.Windows.Forms.Button();
-            this.buttonShowMenu = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.buttonDeleteDish = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // listBoxMenu
@@ -78,7 +77,7 @@
             this.label2.Size = new System.Drawing.Size(103, 20);
             this.label2.TabIndex = 4;
             this.label2.Text = "Цена блюда";
-            this.label2.Click += new System.EventHandler(this.label2_Click);
+
             // 
             // buttonAddDish
             // 
@@ -90,33 +89,22 @@
             this.buttonAddDish.UseVisualStyleBackColor = true;
             this.buttonAddDish.Click += new System.EventHandler(this.buttonAddDish_Click);
             // 
-            // buttonShowMenu
+            // buttonDeleteDish
             // 
-            this.buttonShowMenu.Location = new System.Drawing.Point(422, 29);
-            this.buttonShowMenu.Name = "buttonShowMenu";
-            this.buttonShowMenu.Size = new System.Drawing.Size(231, 46);
-            this.buttonShowMenu.TabIndex = 6;
-            this.buttonShowMenu.Text = "Показать все меню";
-            this.buttonShowMenu.UseVisualStyleBackColor = true;
-            this.buttonShowMenu.Click += new System.EventHandler(this.buttonShowMenu_Click);
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(403, 325);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(132, 57);
-            this.button1.TabIndex = 7;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.buttonDeleteDish.Location = new System.Drawing.Point(422, 303);
+            this.buttonDeleteDish.Name = "buttonDeleteDish";
+            this.buttonDeleteDish.Size = new System.Drawing.Size(231, 37);
+            this.buttonDeleteDish.TabIndex = 7;
+            this.buttonDeleteDish.Text = "Удалить блюдо";
+            this.buttonDeleteDish.UseVisualStyleBackColor = true;
+
             // 
             // FormAdmin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.buttonShowMenu);
+            this.Controls.Add(this.buttonDeleteDish);
             this.Controls.Add(this.buttonAddDish);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
@@ -125,6 +113,7 @@
             this.Controls.Add(this.listBoxMenu);
             this.Name = "FormAdmin";
             this.Text = "Форма для администратора";
+            this.Load += new System.EventHandler(this.FormAdmin_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -138,8 +127,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button buttonAddDish;
-        private System.Windows.Forms.Button buttonShowMenu;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button buttonDeleteDish;
     }
 }
 

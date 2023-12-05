@@ -35,7 +35,7 @@ namespace Cafe
         //итератор для обращения к пунктам меню!
         public IEnumerator GetEnumerator()
         {
-            return this;
+            return (IEnumerator)this;
         }
                
         public object Current => listDish[index];
@@ -55,6 +55,7 @@ namespace Cafe
         {
             info.AddValue("listDish", this.listDish);
         }
+
         public Menu(SerializationInfo info, StreamingContext context)
         {
             this.listDish = (List<Dish>)info.GetValue("listDish", typeof(List<Dish>));
